@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rohit | Portfolio</title>
+
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial;
+    color: white;
+    overflow-x: hidden;
+    background: linear-gradient(270deg, #020617, #0f172a, #020617);
+    background-size: 600% 600%;
+    animation: gradientBG 10s ease infinite;
+}
+
+@keyframes gradientBG {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+/* Blobs */
+.blob {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: cyan;
+    opacity: 0.2;
+    border-radius: 50%;
+    filter: blur(100px);
+    animation: float 10s infinite alternate;
+}
+.blob:nth-child(1){ top:10%; left:10%; }
+.blob:nth-child(2){ top:60%; left:70%; }
+
+@keyframes float {
+    from { transform: translateY(0); }
+    to { transform: translateY(-50px); }
+}
+
+/* Particles */
+#particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+}
+
+/* Glass */
+.glass {
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 20px;
+}
+
+/* Navbar */
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 50px;
+}
+nav a {
+    margin: 0 10px;
+    color: white;
+    text-decoration: none;
+}
+
+/* Section */
+.section {
+    padding: 80px 20px;
+    text-align: center;
+}
+
+#typing { color: cyan; }
+
+/* Skills */
+.skill {
+    display: inline-block;
+    margin: 10px;
+    padding: 15px;
+}
+
+/* Projects */
+.project img {
+    width: 100%;
+    border-radius: 10px;
+}
+.project {
+    width: 300px;
+    margin: 20px auto;
+    transition: 0.5s;
+}
+.project:hover { transform: scale(1.05); }
+
+/* Form */
+input, textarea {
+    width: 90%;
+    padding: 10px;
+    margin: 10px;
+}
+
+/* Buttons */
+button, .btn {
+    padding: 10px 20px;
+    background: cyan;
+    color: black;
+    border: none;
+    cursor: pointer;
+    margin: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    transition: 0.3s;
+}
+.btn:hover { background: white; }
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<div id="particles-js"></div>
+
+<div class="blob"></div>
+<div class="blob"></div>
+
+<header>
+    <h2></h2>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<section id="home" class="section">
+    <div class="glass">
+        <h1>Hi, I'm Rohit</h1>
+        <h2 id="typing"></h2>
+        <p>Passionate Web Developer 🚀</p>
+    </div>
+</section>
+
+<section class="section">
+<h2>Skills</h2>
+<div class="glass">
+<span class="skill">HTML</span>
+<span class="skill">CSS</span>
+<span class="skill">JavaScript</span>
+<span class="skill">Python</span>
+</div>
+</section>
+
+<section id="projects" class="section">
+<h2>Projects</h2>
+
+<div class="project glass">
+<img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600">
+<h3>Portfolio</h3>
+</div>
+
+<div class="project glass">
+<img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=600">
+<h3>Weather App</h3>
+</div>
+
+<div class="project glass">
+<img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=600">
+<h3>Calculator</h3>
+</div>
+
+</section>
+
+<section id="contact" class="section">
+<h2>Contact Me</h2>
+
+<div class="glass">
+
+<!-- 🔗 Working Buttons -->
+<a href="https://github.com/Rohitjakhar01" target="_blank" class="btn">GitHub</a>
+<a href="https://linkedin.com/in/rohit-jakhar-77b9b3346" target="_blank" class="btn">LinkedIn</a>
+
+<p>Email: nareshjakhar60070@gmail.com</p>
+
+<form id="form">
+<input type="text" id="name" placeholder="Name" required>
+<input type="email" id="email" placeholder="Email" required>
+<textarea id="message" placeholder="Message" required></textarea>
+<button type="submit">Send</button>
+</form>
+
+</div>
+</section>
+
+<footer>
+<p>© 2026 Rohit | Portfolio 🔥</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+
+<script>
+particlesJS("particles-js", {
+  particles: {
+    number: { value: 60 },
+    size: { value: 3 },
+    move: { speed: 1.5 }
+  }
+});
+</script>
+
+<script>
+// Typing Effect
+const text = ["Web Developer", "Frontend Developer"];
+let i=0,j=0,current="",del=false;
+
+function type(){
+if(i<text.length){
+if(!del && j<=text[i].length){ current=text[i].substring(0,j++); }
+else if(del && j>=0){ current=text[i].substring(0,j--); }
+
+document.getElementById("typing").innerHTML=current;
+
+if(j===text[i].length) del=true;
+if(j===0){ del=false; i++; }
+
+setTimeout(type,100);
+}else{ i=0; setTimeout(type,500); }
+}
+type();
+</script>
+
+<script>
+// EmailJS
+(function(){
+emailjs.init("YOUR_PUBLIC_KEY");
+})();
+
+document.getElementById("form").addEventListener("submit", function(e){
+e.preventDefault();
+
+emailjs.send("YOUR_SERVICE_ID","YOUR_TEMPLATE_ID",{
+from_name: document.getElementById("name").value,
+from_email: document.getElementById("email").value,
+message: document.getElementById("message").value
+}).then(()=>{
+alert("Message Sent Successfully ✅");
+}, ()=>{
+alert("Error ❌");
+});
+});
+</script>
+
+</body>
+</html>
